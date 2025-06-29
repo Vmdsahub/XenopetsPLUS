@@ -35,17 +35,7 @@ const getPointIcon = (type: string) => {
   }
 };
 
-const getPointColor = (type: string, pointId?: string) => {
-  // Cor específica para mundo-gelado
-  if (pointId === "mundo-gelado") {
-    return {
-      primary: "#3b82f6",
-      secondary: "#1e40af",
-      glow: "rgb(59, 130, 246)",
-      isCustomImage: true,
-    };
-  }
-
+const getPointColor = (type: string) => {
   switch (type) {
     case "planet":
       return {
@@ -88,7 +78,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
   style,
 }) => {
   const Icon = getPointIcon(point.type);
-  const colors = getPointColor(point.type, point.id);
+  const colors = getPointColor(point.type);
 
   return (
     <motion.div
@@ -131,18 +121,10 @@ export const MapPoint: React.FC<MapPointProps> = ({
 
       {/* Main point */}
       <motion.div
-        className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
-          point.id === "mundo-gelado" ? "w-60 h-60" : "w-6 h-6"
-        }`}
+        className="relative w-6 h-6 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm"
         style={{
-          background:
-            point.id === "mundo-gelado"
-              ? "transparent"
-              : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-          border:
-            point.id === "mundo-gelado"
-              ? "none"
-              : `1px solid ${colors.primary}40`,
+          background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+          border: `1px solid ${colors.primary}40`,
         }}
         animate={{
           boxShadow: isNearby
@@ -150,36 +132,26 @@ export const MapPoint: React.FC<MapPointProps> = ({
             : `0 0 8px ${colors.glow}60`,
         }}
       >
-        {point.id === "mundo-gelado" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800"
-            alt="Mundo Gelado"
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <Icon size={14} className="text-white drop-shadow-sm" />
-        )}
+        <Icon size={14} className="text-white drop-shadow-sm" />
       </motion.div>
 
-      {/* Ambient glow - skip for mundo-gelado */}
-      {point.id !== "mundo-gelado" && (
-        <motion.div
-          className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
-          style={{
-            background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 2,
-          }}
-        />
-      )}
+      {/* Ambient glow */}
+      <motion.div
+        className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
+        style={{
+          background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
+        }}
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: Math.random() * 2,
+        }}
+      />
 
       {/* Hover tooltip */}
       <motion.div
@@ -194,8 +166,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
       </motion.div>
 
-      {/* Orbit rings for planets - skip for mundo-gelado */}
-      {point.type === "planet" && point.id !== "mundo-gelado" && (
+      {/* Orbit rings for planets */}
+      {point.type === "planet" && (
         <motion.div
           className="absolute inset-0 rounded-full border border-white/20 -z-10"
           style={{
