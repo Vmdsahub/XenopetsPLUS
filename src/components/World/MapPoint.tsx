@@ -175,7 +175,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
           point.id === "mundo-gelado" ||
           point.id === "planeta-limite" ||
           point.id === "estacao-borda" ||
-          point.id === "campo-asteroides"
+          point.id === "campo-asteroides" ||
+          point.id === "nebulosa-crimson"
             ? "w-60 h-60"
             : "w-6 h-6"
         }`}
@@ -184,14 +185,16 @@ export const MapPoint: React.FC<MapPointProps> = ({
             point.id === "mundo-gelado" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
-            point.id === "campo-asteroides"
+            point.id === "campo-asteroides" ||
+            point.id === "nebulosa-crimson"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
             point.id === "mundo-gelado" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
-            point.id === "campo-asteroides"
+            point.id === "campo-asteroides" ||
+            point.id === "nebulosa-crimson"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
