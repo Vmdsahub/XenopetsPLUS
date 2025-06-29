@@ -39,7 +39,7 @@ const wrap = (value: number, min: number, max: number): number => {
   return result;
 };
 
-export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
+export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
   const [shipPosition, setShipPosition] = useState(() => {
     const saved = localStorage.getItem("xenopets-player-data");
     const data = saved
