@@ -66,6 +66,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para campo-asteroides
+  if (pointId === "campo-asteroides") {
+    return {
+      primary: "#ec4899",
+      secondary: "#db2777",
+      glow: "rgb(236, 72, 153)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
