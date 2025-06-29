@@ -58,7 +58,7 @@ const generateLinearPoints = () => {
       type: "station" as const,
       description: "Centro comercial da galáxia",
       image:
-        "https://images.pexels.com/photos/2156/sky-earth-space-working.jpg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F33bc3a2c9ab640e8a3a4e31a127b186c?format=webp&width=800",
     },
     {
       id: "nebulosa-crimson",
