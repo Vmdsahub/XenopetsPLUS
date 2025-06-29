@@ -788,7 +788,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
         proposedMapX * proposedMapX + proposedMapY * proposedMapY,
       );
 
-      // S�� detecta colisão bem próximo da borda visual (1190-1220px)
+      // Só detecta colisão bem próximo da borda visual (1190-1220px)
       // Permite navegar até quase tocar a linha tracejada
       if (distanceFromCenter > 1190 && distanceFromCenter <= 1220) {
         const canvas = canvasRef.current;
@@ -1475,7 +1475,10 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
               : "cursor-grab"
       }`}
       style={{ userSelect: "none" }}
-      onMouseMove={handleMouseMove}
+      onMouseMove={(e) => {
+        handleMouseMove(e);
+        handlePointMouseMove(e);
+      }}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
