@@ -86,6 +86,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para estacao-omega
+  if (pointId === "estacao-omega") {
+    return {
+      primary: "#10b981",
+      secondary: "#059669",
+      glow: "rgb(16, 185, 129)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
