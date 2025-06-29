@@ -261,6 +261,12 @@ export const MapPoint: React.FC<MapPointProps> = ({
             alt="Nebulosa Crimson"
             className="w-full h-full object-contain"
           />
+        ) : point.id === "estacao-omega" ? (
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F33bc3a2c9ab640e8a3a4e31a127b186c?format=webp&width=800"
+            alt="Estação Omega"
+            className="w-full h-full object-contain"
+          />
         ) : (
           <Icon size={14} className="text-white drop-shadow-sm" />
         )}
