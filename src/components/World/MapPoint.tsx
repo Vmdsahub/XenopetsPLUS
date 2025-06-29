@@ -230,10 +230,11 @@ export const MapPoint: React.FC<MapPointProps> = ({
         )}
       </motion.div>
 
-      {/* Ambient glow - skip for mundo-gelado, campo-asteroides and planeta-limite */}
+      {/* Ambient glow - skip for mundo-gelado, campo-asteroides, planeta-limite and estacao-borda */}
       {point.id !== "mundo-gelado" &&
         point.id !== "campo-asteroides" &&
-        point.id !== "planeta-limite" && (
+        point.id !== "planeta-limite" &&
+        point.id !== "estacao-borda" && (
           <motion.div
             className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
             style={{
