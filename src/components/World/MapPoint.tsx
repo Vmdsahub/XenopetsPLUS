@@ -223,7 +223,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
       {/* Ambient glow - skip for custom images */}
       {point.id !== "mundo-gelado" &&
         point.id !== "planeta-limite" &&
-        point.id !== "estacao-borda" && (
+        point.id !== "estacao-borda" &&
+        point.id !== "campo-asteroides" && (
           <motion.div
             className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
             style={{
