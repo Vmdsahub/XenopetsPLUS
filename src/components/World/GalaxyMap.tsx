@@ -90,7 +90,7 @@ const generateLinearPoints = () => {
       type: "station" as const,
       description: "Estação nos limites do espaço",
       image:
-        "https://images.pexels.com/photos/2156/sky-earth-space-working.jpg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2Fddc08062fa4847258d35e5b4220283d2?format=webp&width=800",
     },
     {
       id: "planeta-limite",
