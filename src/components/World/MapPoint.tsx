@@ -206,25 +206,27 @@ export const MapPoint: React.FC<MapPointProps> = ({
         )}
       </motion.div>
 
-      {/* Ambient glow - skip for mundo-gelado and campo-asteroides */}
-      {point.id !== "mundo-gelado" && point.id !== "campo-asteroides" && (
-        <motion.div
-          className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
-          style={{
-            background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 2,
-          }}
-        />
-      )}
+      {/* Ambient glow - skip for mundo-gelado, campo-asteroides and planeta-limite */}
+      {point.id !== "mundo-gelado" &&
+        point.id !== "campo-asteroides" &&
+        point.id !== "planeta-limite" && (
+          <motion.div
+            className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
+            style={{
+              background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 2,
+            }}
+          />
+        )}
 
       {/* Hover tooltip */}
       <motion.div
