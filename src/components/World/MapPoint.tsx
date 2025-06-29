@@ -141,9 +141,16 @@ export const MapPoint: React.FC<MapPointProps> = ({
       animate={{
         opacity: 1,
         scale: 1,
-        filter: isNearby
-          ? `drop-shadow(0 0 12px ${colors.glow})`
-          : `drop-shadow(0 0 6px ${colors.glow})`,
+        filter:
+          point.id === "mundo-gelado" ||
+          point.id === "planeta-limite" ||
+          point.id === "estacao-borda" ||
+          point.id === "campo-asteroides" ||
+          point.id === "nebulosa-crimson"
+            ? "none"
+            : isNearby
+              ? `drop-shadow(0 0 12px ${colors.glow})`
+              : `drop-shadow(0 0 6px ${colors.glow})`,
       }}
       transition={{
         type: "spring",
