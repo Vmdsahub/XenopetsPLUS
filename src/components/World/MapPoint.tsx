@@ -167,7 +167,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
           point.id === "estacao-borda" ||
           point.id === "campo-asteroides" ||
           point.id === "nebulosa-crimson" ||
-          point.id === "estacao-omega"
+          point.id === "estacao-omega" ||
+          point.id === "terra-nova"
             ? "none"
             : isNearby
               ? `drop-shadow(0 0 12px ${colors.glow})`
