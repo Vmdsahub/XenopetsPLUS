@@ -152,7 +152,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
       >
         {point.id === "mundo-gelado" ? (
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800"
+            src="/image.png"
             alt="Mundo Gelado"
             className="w-full h-full object-cover"
           />
