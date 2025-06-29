@@ -82,7 +82,7 @@ const generateLinearPoints = () => {
       type: "planet" as const,
       description: "Planeta coberto de gelo eterno",
       image:
-        "https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F7e4bf7fbfae64dec9a1f6cc4cf45cae2?format=webp&width=800",
     },
     {
       id: "estacao-borda",
