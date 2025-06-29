@@ -1378,6 +1378,11 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     showCollisionNotification,
   ]);
 
+  const handlePointClick = (point: Point) => {
+    console.log(`Clicou no ${point.label}`, point);
+    // Aqui você pode adicionar a lógica para abrir detalhes do ponto
+  };
+
   const resetShipPosition = () => {
     setShipPosition({ x: 50, y: 50 });
     setVelocity({ x: 0, y: 0 });
