@@ -74,7 +74,7 @@ const generateLinearPoints = () => {
       type: "asteroid" as const,
       description: "Rico em recursos minerais raros",
       image:
-        "https://images.pexels.com/photos/2159/flight-sky-earth-space-working.jpg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2Fd72456f351f44914a7041ea650599fa5?format=webp&width=800",
     },
     {
       id: "mundo-gelado",
