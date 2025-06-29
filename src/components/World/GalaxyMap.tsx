@@ -41,7 +41,7 @@ const wrap = (value: number, min: number, max: number): number => {
   return result;
 };
 
-// Gera pontos em linha horizontal para facilitar cliques
+// Gera pontos distribuídos ao redor do centro
 const generateLinearPoints = () => {
   const points = [
     {
@@ -102,17 +102,21 @@ const generateLinearPoints = () => {
     },
   ];
 
-  // Arranja pontos em linha horizontal
-  const centerY = 50; // Centro vertical
-  const spacing = 80 / (points.length - 1); // Espaçamento entre 10% e 90%
+  // Posições distribuídas ao redor do centro
+  const centerX = 50;
+  const centerY = 50;
+  const radius = 20; // Raio do círculo em porcentagem
 
   return points.map((point, index) => {
-    const x = 10 + index * spacing; // Distribui de 10% a 90%
+    // Distribui os pontos em círculo ao redor do centro
+    const angle = (index * 2 * Math.PI) / points.length;
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY + Math.sin(angle) * radius;
 
     return {
       ...point,
-      x: x,
-      y: centerY,
+      x: Math.max(5, Math.min(95, x)), // Garante que não saia da tela
+      y: Math.max(5, Math.min(95, y)), // Garante que não saia da tela
     };
   });
 };
