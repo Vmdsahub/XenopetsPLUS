@@ -212,26 +212,28 @@ export const MapPoint: React.FC<MapPointProps> = ({
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
       </motion.div>
 
-      {/* Orbit rings for planets - skip for mundo-gelado */}
-      {point.type === "planet" && point.id !== "mundo-gelado" && (
-        <motion.div
-          className="absolute inset-0 rounded-full border border-white/20 -z-10"
-          style={{
-            width: "150%",
-            height: "150%",
-            left: "-25%",
-            top: "-25%",
-          }}
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      )}
+      {/* Orbit rings for planets - skip for custom images */}
+      {point.type === "planet" &&
+        point.id !== "mundo-gelado" &&
+        point.id !== "planeta-limite" && (
+          <motion.div
+            className="absolute inset-0 rounded-full border border-white/20 -z-10"
+            style={{
+              width: "150%",
+              height: "150%",
+              left: "-25%",
+              top: "-25%",
+            }}
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        )}
     </motion.div>
   );
 };
