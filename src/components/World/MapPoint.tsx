@@ -141,29 +141,42 @@ export const MapPoint: React.FC<MapPointProps> = ({
 
       {/* Main point */}
       <motion.div
-        className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
-          point.id === "mundo-gelado" ? "w-60 h-60" : "w-6 h-6"
+        className={`relative flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
+          point.id === "mundo-gelado"
+            ? "rounded-full w-60 h-60"
+            : point.id === "campo-asteroides"
+              ? "w-60 h-60"
+              : "rounded-full w-6 h-6"
         }`}
         style={{
           background:
-            point.id === "mundo-gelado"
+            point.id === "mundo-gelado" || point.id === "campo-asteroides"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
-            point.id === "mundo-gelado"
+            point.id === "mundo-gelado" || point.id === "campo-asteroides"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
         animate={{
-          boxShadow: isNearby
-            ? `0 0 20px ${colors.glow}`
-            : `0 0 8px ${colors.glow}60`,
+          boxShadow:
+            point.id === "campo-asteroides"
+              ? "none"
+              : isNearby
+                ? `0 0 20px ${colors.glow}`
+                : `0 0 8px ${colors.glow}60`,
         }}
       >
         {point.id === "mundo-gelado" ? (
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800"
             alt="Mundo Gelado"
+            className="w-full h-full object-cover"
+          />
+        ) : point.id === "campo-asteroides" ? (
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F38e9254c0edd4dc79ac95881d9b4a980?format=webp&width=800"
+            alt="Campo de Asteroides"
             className="w-full h-full object-cover"
           />
         ) : (
