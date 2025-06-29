@@ -140,6 +140,14 @@ export const MapPoint: React.FC<MapPointProps> = ({
   const Icon = getPointIcon(point.type);
   const colors = getPointColor(point.type, point.id);
 
+  // Check if this point has a custom image
+  const hasCustomImage = point.id === "mundo-gelado" ||
+    point.id === "campo-asteroides" ||
+    point.id === "planeta-limite" ||
+    point.id === "estacao-borda" ||
+    point.id === "nebulosa-crimson" ||
+    point.id === "estacao-omega";
+
   return (
     <motion.div
       className={`absolute z-10 ${isDragging ? "pointer-events-none" : "cursor-pointer"}`}
@@ -158,17 +166,11 @@ export const MapPoint: React.FC<MapPointProps> = ({
       animate={{
         opacity: 1,
         scale: 1,
-        filter:
-          point.id === "mundo-gelado" ||
-          point.id === "campo-asteroides" ||
-          point.id === "planeta-limite" ||
-          point.id === "estacao-borda" ||
-          point.id === "nebulosa-crimson" ||
-          point.id === "estacao-omega"
-            ? "none"
-            : isNearby
-              ? `drop-shadow(0 0 12px ${colors.glow})`
-              : `drop-shadow(0 0 6px ${colors.glow})`,
+        filter: hasCustomImage
+          ? "none"
+          : isNearby
+            ? `drop-shadow(0 0 12px ${colors.glow})`
+            : `drop-shadow(0 0 6px ${colors.glow})`,
       }}
       transition={{
         type: "spring",
@@ -176,145 +178,109 @@ export const MapPoint: React.FC<MapPointProps> = ({
         damping: 25,
       }}
     >
-      {/* Outer pulse ring for nearby state - skip for all custom images */}
-      {isNearby &&
-        point.id !== "mundo-gelado" &&
-        point.id !== "campo-asteroides" &&
-        point.id !== "planeta-limite" &&
-        point.id !== "estacao-borda" &&
-        point.id !== "nebulosa-crimson" &&
-        point.id !== "estacao-omega" && (
-          <motion.div
-            className="absolute inset-0 rounded-full border-2"
-            style={{ borderColor: colors.primary }}
-            animate={{
-              scale: [1, 2, 1],
-              opacity: [0.8, 0.2, 0.8],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        )}
+      {/* Outer pulse ring for nearby state - skip for custom images */}
+      {isNearby && !hasCustomImage && (
+        <motion.div
+          className="absolute inset-0 rounded-full border-2"
+          style={{ borderColor: colors.primary }}
+          animate={{
+            scale: [1, 2, 1],
+            opacity: [0.8, 0.2, 0.8],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      )}
 
-      {/* Main point */}
-      <motion.div
-        className={`relative flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
-          point.id === "mundo-gelado"
-            ? "rounded-full w-60 h-60"
-            : point.id === "campo-asteroides"
-              ? "w-60 h-60"
-              : point.id === "planeta-limite"
-                ? "w-60 h-60"
-                : point.id === "estacao-borda"
-                  ? "w-60 h-60"
-                  : point.id === "nebulosa-crimson"
-                    ? "w-60 h-60"
-                    : point.id === "estacao-omega"
-                      ? "w-60 h-60"
-                      : "rounded-full w-6 h-6"
-        }`}
-        style={{
-          background:
-            point.id === "mundo-gelado" ||
-            point.id === "campo-asteroides" ||
-            point.id === "planeta-limite" ||
-            point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson" ||
-            point.id === "estacao-omega"
-              ? "transparent"
-              : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-          border:
-            point.id === "mundo-gelado" ||
-            point.id === "campo-asteroides" ||
-            point.id === "planeta-limite" ||
-            point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson" ||
-            point.id === "estacao-omega"
-              ? "none"
-              : `1px solid ${colors.primary}40`,
-        }}
-        animate={{
-          boxShadow:
-            point.id === "mundo-gelado" ||
-            point.id === "campo-asteroides" ||
-            point.id === "planeta-limite" ||
-            point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson" ||
-            point.id === "estacao-omega"
-              ? "none"
-              : isNearby
-                ? `0 0 20px ${colors.glow}`
-                : `0 0 8px ${colors.glow}60`,
-        }}
-      >
-        {point.id === "mundo-gelado" ? (
-          <img
-            src="/image.png"
-            alt="Mundo Gelado"
-            className="w-full h-full object-cover"
-          />
-        ) : point.id === "campo-asteroides" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F38e9254c0edd4dc79ac95881d9b4a980?format=webp&width=800"
-            alt="Campo de Asteroides"
-            className="w-full h-full object-cover"
-          />
-        ) : point.id === "planeta-limite" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F3186372ded534a41a688af7afc027f4f?format=webp&width=800"
-            alt="Planeta Limite"
-            className="w-full h-full object-cover"
-          />
-        ) : point.id === "estacao-borda" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F8a24c18cd7c2409a994370826e27a122?format=webp&width=800"
-            alt="Estação da Borda"
-            className="w-full h-full object-cover"
-          />
-        ) : point.id === "nebulosa-crimson" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2Fb46f0e9c86944916bb1dbd8bbbe00729?format=webp&width=800"
-            alt="Nebulosa Crimson"
-            className="w-full h-full object-cover"
-          />
-        ) : point.id === "estacao-omega" ? (
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F756e417912144ff2afa79d478073dbc7?format=webp&width=800"
-            alt="Estação Omega"
-            className="w-full h-full object-cover"
-          />
-        ) : (
+      {/* Custom images without containers */}
+      {point.id === "mundo-gelado" && (
+        <img
+          src="/image.png"
+          alt="Mundo Gelado"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {point.id === "campo-asteroides" && (
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F38e9254c0edd4dc79ac95881d9b4a980?format=webp&width=800"
+          alt="Campo de Asteroides"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {point.id === "planeta-limite" && (
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F3186372ded534a41a688af7afc027f4f?format=webp&width=800"
+          alt="Planeta Limite"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {point.id === "estacao-borda" && (
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F8a24c18cd7c2409a994370826e27a122?format=webp&width=800"
+          alt="Estação da Borda"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {point.id === "nebulosa-crimson" && (
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2Fb46f0e9c86944916bb1dbd8bbbe00729?format=webp&width=800"
+          alt="Nebulosa Crimson"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {point.id === "estacao-omega" && (
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2Fed889bbb99a84576b94d83d659582f83%2F756e417912144ff2afa79d478073dbc7?format=webp&width=800"
+          alt="Estação Omega"
+          className="w-60 h-60 object-contain"
+        />
+      )}
+
+      {/* Regular points with containers (for non-custom images) */}
+      {!hasCustomImage && (
+        <motion.div
+          className="relative rounded-full w-6 h-6 flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden"
+          style={{
+            background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+            border: `1px solid ${colors.primary}40`,
+          }}
+          animate={{
+            boxShadow: isNearby
+              ? `0 0 20px ${colors.glow}`
+              : `0 0 8px ${colors.glow}60`,
+          }}
+        >
           <Icon size={14} className="text-white drop-shadow-sm" />
-        )}
-      </motion.div>
+        </motion.div>
+      )}
 
-      {/* Ambient glow - skip for all custom images */}
-      {point.id !== "mundo-gelado" &&
-        point.id !== "campo-asteroides" &&
-        point.id !== "planeta-limite" &&
-        point.id !== "estacao-borda" &&
-        point.id !== "nebulosa-crimson" &&
-        point.id !== "estacao-omega" && (
-          <motion.div
-            className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
-            style={{
-              background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
-            }}
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2,
-            }}
-          />
-        )}
+      {/* Ambient glow - skip for custom images */}
+      {!hasCustomImage && (
+        <motion.div
+          className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
+          style={{
+            background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
+          }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: Math.random() * 2,
+          }}
+        />
+      )}
 
       {/* Hover tooltip */}
       <motion.div
@@ -329,29 +295,26 @@ export const MapPoint: React.FC<MapPointProps> = ({
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
       </motion.div>
 
-      {/* Orbit rings for planets - skip for mundo-gelado, campo-asteroides and planeta-limite */}
-      {point.type === "planet" &&
-        point.id !== "mundo-gelado" &&
-        point.id !== "campo-asteroides" &&
-        point.id !== "planeta-limite" && (
-          <motion.div
-            className="absolute inset-0 rounded-full border border-white/20 -z-10"
-            style={{
-              width: "150%",
-              height: "150%",
-              left: "-25%",
-              top: "-25%",
-            }}
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        )}
+      {/* Orbit rings for planets - skip for custom images */}
+      {point.type === "planet" && !hasCustomImage && (
+        <motion.div
+          className="absolute inset-0 rounded-full border border-white/20 -z-10"
+          style={{
+            width: "150%",
+            height: "150%",
+            left: "-25%",
+            top: "-25%",
+          }}
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      )}
     </motion.div>
   );
 };
