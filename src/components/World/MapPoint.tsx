@@ -196,7 +196,9 @@ export const MapPoint: React.FC<MapPointProps> = ({
                   ? "w-60 h-60"
                   : point.id === "nebulosa-crimson"
                     ? "w-60 h-60"
-                    : "rounded-full w-6 h-6"
+                    : point.id === "estacao-omega"
+                      ? "w-60 h-60"
+                      : "rounded-full w-6 h-6"
         }`}
         style={{
           background:
@@ -204,7 +206,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson"
+            point.id === "nebulosa-crimson" ||
+            point.id === "estacao-omega"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
@@ -212,7 +215,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson"
+            point.id === "nebulosa-crimson" ||
+            point.id === "estacao-omega"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
@@ -221,7 +225,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
-            point.id === "nebulosa-crimson"
+            point.id === "nebulosa-crimson" ||
+            point.id === "estacao-omega"
               ? "none"
               : isNearby
                 ? `0 0 20px ${colors.glow}`
