@@ -198,7 +198,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
       {/* Custom images without containers */}
       {point.id === "mundo-gelado" && (
         <img
-          src="/image.png"
+          src="/image copy.png"
           alt="Mundo Gelado"
           className="w-60 h-60 object-contain"
         />
