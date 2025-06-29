@@ -102,21 +102,21 @@ const generateLinearPoints = () => {
     },
   ];
 
-  // Posições distribuídas ao redor do centro
-  const centerX = 50;
-  const centerY = 50;
-  const radius = 20; // Raio do círculo em porcentagem
+  // Posições distribuídas em círculo ao redor das coordenadas visuais do centro
+  const centerX = 50; // Centro visual do mapa
+  const centerY = 50; // Centro visual do mapa
+  const radius = 25; // Raio maior para melhor distribuição
 
   return points.map((point, index) => {
-    // Distribui os pontos em círculo ao redor do centro
+    // Distribui os pontos em círculo ao redor do centro visual
     const angle = (index * 2 * Math.PI) / points.length;
     const x = centerX + Math.cos(angle) * radius;
     const y = centerY + Math.sin(angle) * radius;
 
     return {
       ...point,
-      x: Math.max(5, Math.min(95, x)), // Garante que não saia da tela
-      y: Math.max(5, Math.min(95, y)), // Garante que não saia da tela
+      x: Math.max(8, Math.min(92, x)), // Margem maior para evitar cortes
+      y: Math.max(8, Math.min(92, y)), // Margem maior para evitar cortes
     };
   });
 };
