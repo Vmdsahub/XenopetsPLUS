@@ -122,8 +122,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
         delay: Math.random() * 0.5,
       }}
     >
-      {/* Outer pulse ring for nearby state */}
-      {isNearby && (
+      {/* Outer pulse ring for nearby state - skip for campo-asteroides */}
+      {isNearby && point.id !== "campo-asteroides" && (
         <motion.div
           className="absolute inset-0 rounded-full border-2"
           style={{ borderColor: colors.primary }}
