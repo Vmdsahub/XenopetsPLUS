@@ -461,7 +461,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
       "#FB7185",
     ];
 
-    // Função hash robusta
+    // Fun��ão hash robusta
     const hash = (x: number, y: number, layer: number) => {
       let h = 1779033703 ^ layer;
       h = Math.imul(h ^ Math.floor(x), 3432918353);
@@ -1521,7 +1521,30 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
             }}
           />
         </div>
-        {/* Pontos removidos */}
+        {/* Novos pontos clicáveis */}
+        {POINTS.map((point) => (
+          <div
+            key={point.id}
+            className="absolute z-20 cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
+            style={{
+              left: `${point.x}%`,
+              top: `${point.y}%`,
+            }}
+            onClick={() => handlePointClick(point)}
+          >
+            <div className="relative group">
+              {/* Ponto principal */}
+              <div className="w-4 h-4 bg-blue-400 rounded-full border-2 border-white shadow-lg hover:scale-125 transition-transform duration-200 hover:bg-blue-300">
+                <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+              </div>
+
+              {/* Tooltip */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                {point.label}
+              </div>
+            </div>
+          </div>
+        ))}
       </motion.div>
 
       {/* Nave do jogador - fixa no centro */}
