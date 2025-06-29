@@ -712,7 +712,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     };
   }, [shipRotation]);
 
-  // Função para repelir o jogador
+  // Fun��ão para repelir o jogador
   const repelPlayer = useCallback(
     (collisionX: number, collisionY: number) => {
       const canvas = canvasRef.current;
@@ -1479,8 +1479,14 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
         handleMouseMove(e);
         handlePointMouseMove(e);
       }}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onMouseUp={() => {
+        handleMouseUp();
+        handlePointMouseUp();
+      }}
+      onMouseLeave={() => {
+        handleMouseUp();
+        handlePointMouseUp();
+      }}
     >
       {/* Simple progress bar for auto-pilot activation */}
       {isHolding && holdProgress > 0 && (
