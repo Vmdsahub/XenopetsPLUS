@@ -152,22 +152,27 @@ export const MapPoint: React.FC<MapPointProps> = ({
         delay: Math.random() * 0.5,
       }}
     >
-      {/* Outer pulse ring for nearby state */}
-      {isNearby && (
-        <motion.div
-          className="absolute inset-0 rounded-full border-2"
-          style={{ borderColor: colors.primary }}
-          animate={{
-            scale: [1, 2, 1],
-            opacity: [0.8, 0.2, 0.8],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      )}
+      {/* Outer pulse ring for nearby state - skip for custom images */}
+      {isNearby &&
+        point.id !== "mundo-gelado" &&
+        point.id !== "planeta-limite" &&
+        point.id !== "estacao-borda" &&
+        point.id !== "campo-asteroides" &&
+        point.id !== "nebulosa-crimson" && (
+          <motion.div
+            className="absolute inset-0 rounded-full border-2"
+            style={{ borderColor: colors.primary }}
+            animate={{
+              scale: [1, 2, 1],
+              opacity: [0.8, 0.2, 0.8],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        )}
 
       {/* Main point */}
       <motion.div
