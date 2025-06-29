@@ -96,6 +96,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para terra-nova
+  if (pointId === "terra-nova") {
+    return {
+      primary: "#0ea5e9",
+      secondary: "#0284c7",
+      glow: "rgb(14, 165, 233)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
