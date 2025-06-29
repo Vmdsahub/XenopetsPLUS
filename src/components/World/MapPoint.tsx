@@ -243,7 +243,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
       {point.id !== "mundo-gelado" &&
         point.id !== "planeta-limite" &&
         point.id !== "estacao-borda" &&
-        point.id !== "campo-asteroides" && (
+        point.id !== "campo-asteroides" &&
+        point.id !== "nebulosa-crimson" && (
           <motion.div
             className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
             style={{
