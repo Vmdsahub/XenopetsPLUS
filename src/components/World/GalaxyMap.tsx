@@ -1442,7 +1442,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     setPoints(newPoints);
   };
 
-  const handleMouseUp = () => {
+  const handlePointMouseUp = () => {
     if (!isAdmin || draggingPoint === null) return;
 
     // Save final position
