@@ -223,6 +223,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
         }}
         animate={{
           boxShadow:
+            point.id === "mundo-gelado" ||
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
             point.id === "estacao-borda" ||
