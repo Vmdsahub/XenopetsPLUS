@@ -142,15 +142,17 @@ export const MapPoint: React.FC<MapPointProps> = ({
       {/* Main point */}
       <motion.div
         className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
-          point.id === "mundo-gelado" ? "w-60 h-60" : "w-6 h-6"
+          point.id === "mundo-gelado" || point.id === "planeta-limite"
+            ? "w-60 h-60"
+            : "w-6 h-6"
         }`}
         style={{
           background:
-            point.id === "mundo-gelado"
+            point.id === "mundo-gelado" || point.id === "planeta-limite"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
-            point.id === "mundo-gelado"
+            point.id === "mundo-gelado" || point.id === "planeta-limite"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
@@ -165,6 +167,12 @@ export const MapPoint: React.FC<MapPointProps> = ({
             src="https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800"
             alt="Mundo Gelado"
             className="w-full h-full object-cover"
+          />
+        ) : point.id === "planeta-limite" ? (
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F32e8fdb02b8847e2905c284b102c06f1?format=webp&width=800"
+            alt="Planeta Limite"
+            className="w-full h-full object-contain"
           />
         ) : (
           <Icon size={14} className="text-white drop-shadow-sm" />
