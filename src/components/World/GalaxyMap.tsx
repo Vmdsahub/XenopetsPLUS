@@ -1367,32 +1367,6 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     localStorage.removeItem("xenopets-player-data");
   };
 
-  const handlePointClick = (pointId: string) => {
-    const point = GALAXY_POINTS.find((p) => p.id === pointId);
-    if (point) {
-      onPointClick(pointId, point);
-    }
-  };
-
-  // Renderiza pontos de forma otimizada
-  const renderPoints = () => {
-    return GALAXY_POINTS.map((point) => (
-      <div key={point.id} className="pointer-events-auto relative z-30">
-        <MapPoint
-          point={point}
-          isNearby={nearbyPoint === point.id}
-          onClick={() => handlePointClick(point.id)}
-          isDragging={isDragging}
-          style={{
-            left: `${point.x}%`,
-            top: `${point.y}%`,
-            willChange: "transform", // otimização GPU
-          }}
-        />
-      </div>
-    ));
-  };
-
   return (
     <div
       ref={containerRef}
