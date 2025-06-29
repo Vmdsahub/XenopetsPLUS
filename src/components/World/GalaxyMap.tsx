@@ -1554,7 +1554,10 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
       <div
         className={`absolute inset-0 z-5 ${isDragging ? "cursor-grabbing" : isAutoPilot ? "cursor-pointer" : "cursor-grab"}`}
         onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
+        onMouseMove={(e) => {
+          handleMouseMove(e);
+          handlePointMouseMove(e);
+        }}
         onMouseUp={handleMouseUp}
         style={{ backgroundColor: "transparent", userSelect: "none" }}
       />
