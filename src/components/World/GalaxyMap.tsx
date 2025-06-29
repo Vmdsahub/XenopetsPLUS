@@ -1389,9 +1389,66 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     showCollisionNotification,
   ]);
 
+  // Save points to localStorage
+  const savePoints = (newPoints: Point[]) => {
+    localStorage.setItem("xenopets-galaxy-points", JSON.stringify(newPoints));
+    setPoints(newPoints);
+  };
+
   const handlePointClick = (point: Point) => {
+    if (!isAdmin || draggingPoint !== null) return;
     console.log(`Clicou no ${point.label}`, point);
     // Aqui você pode adicionar a lógica para abrir detalhes do ponto
+  };
+
+  // Point drag handlers
+  const handlePointMouseDown = (e: React.MouseEvent, point: Point) => {
+    if (!isAdmin) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const pointX = (point.x / 100) * rect.width;
+    const pointY = (point.y / 100) * rect.height;
+
+    setDraggingPoint(point.id);
+    setDragOffset({
+      x: mouseX - pointX,
+      y: mouseY - pointY,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isAdmin || draggingPoint === null) return;
+
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const mouseX = e.clientX - rect.left - dragOffset.x;
+    const mouseY = e.clientY - rect.top - dragOffset.y;
+
+    const newX = Math.max(5, Math.min(95, (mouseX / rect.width) * 100));
+    const newY = Math.max(5, Math.min(95, (mouseY / rect.height) * 100));
+
+    const newPoints = points.map((p) =>
+      p.id === draggingPoint ? { ...p, x: newX, y: newY } : p,
+    );
+
+    setPoints(newPoints);
+  };
+
+  const handleMouseUp = () => {
+    if (!isAdmin || draggingPoint === null) return;
+
+    // Save final position
+    savePoints(points);
+    setDraggingPoint(null);
+    setDragOffset({ x: 0, y: 0 });
   };
 
   const resetShipPosition = () => {
