@@ -1466,13 +1466,18 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     <div
       ref={containerRef}
       className={`relative w-full h-[650px] bg-gradient-to-br from-gray-950 via-slate-900 to-black rounded-2xl overflow-hidden ${
-        isDragging
+        draggingPoint !== null
           ? "cursor-grabbing"
-          : isAutoPilot
-            ? "cursor-pointer"
-            : "cursor-grab"
+          : isDragging
+            ? "cursor-grabbing"
+            : isAutoPilot
+              ? "cursor-pointer"
+              : "cursor-grab"
       }`}
       style={{ userSelect: "none" }}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
     >
       {/* Simple progress bar for auto-pilot activation */}
       {isHolding && holdProgress > 0 && (
