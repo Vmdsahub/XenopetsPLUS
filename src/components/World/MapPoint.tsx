@@ -207,7 +207,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
 
       {/* Main point */}
       <motion.div
-        className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
+        className={`relative flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
           point.id === "mundo-gelado" ||
           point.id === "planeta-limite" ||
           point.id === "estacao-borda" ||
@@ -216,7 +216,7 @@ export const MapPoint: React.FC<MapPointProps> = ({
           point.id === "estacao-omega" ||
           point.id === "terra-nova"
             ? "w-60 h-60"
-            : "w-6 h-6"
+            : "w-6 h-6 rounded-full"
         }`}
         style={{
           background:
