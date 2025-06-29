@@ -76,6 +76,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para nebulosa-crimson
+  if (pointId === "nebulosa-crimson") {
+    return {
+      primary: "#6366f1",
+      secondary: "#4f46e5",
+      glow: "rgb(99, 102, 241)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
