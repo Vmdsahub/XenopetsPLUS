@@ -156,21 +156,27 @@ export const MapPoint: React.FC<MapPointProps> = ({
             ? "rounded-full w-60 h-60"
             : point.id === "campo-asteroides"
               ? "w-60 h-60"
-              : "rounded-full w-6 h-6"
+              : point.id === "planeta-limite"
+                ? "w-60 h-60"
+                : "rounded-full w-6 h-6"
         }`}
         style={{
           background:
-            point.id === "mundo-gelado" || point.id === "campo-asteroides"
+            point.id === "mundo-gelado" ||
+            point.id === "campo-asteroides" ||
+            point.id === "planeta-limite"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
-            point.id === "mundo-gelado" || point.id === "campo-asteroides"
+            point.id === "mundo-gelado" ||
+            point.id === "campo-asteroides" ||
+            point.id === "planeta-limite"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
         animate={{
           boxShadow:
-            point.id === "campo-asteroides"
+            point.id === "campo-asteroides" || point.id === "planeta-limite"
               ? "none"
               : isNearby
                 ? `0 0 20px ${colors.glow}`
