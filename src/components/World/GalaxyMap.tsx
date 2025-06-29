@@ -1632,7 +1632,8 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
             }}
           />
         </div>
-        {/* Pontos removidos */}
+        {/* Pontos posicionados em círculo ao redor do centro */}
+        <div className="absolute inset-0 z-20">{renderPoints()}</div>
       </motion.div>
 
       {/* Nave do jogador - fixa no centro */}
