@@ -10,9 +10,7 @@ import { PlayerShip } from "./PlayerShip";
 import { MapPoint } from "./MapPoint";
 import { playBarrierCollisionSound } from "../../utils/soundManager";
 
-interface GalaxyMapProps {
-  onPointClick: (pointId: string, pointData: any) => void;
-}
+interface GalaxyMapProps {}
 
 interface MapPointData {
   id: string;
@@ -1543,7 +1541,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
             }}
             transition={{
               rotate: {
-                duration: 600, // Rota��ão muito mais lenta - 10 minutos por volta
+                duration: 600, // Rotação muito mais lenta - 10 minutos por volta
                 repeat: Infinity,
                 ease: "linear",
               },
