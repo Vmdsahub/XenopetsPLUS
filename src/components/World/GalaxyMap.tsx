@@ -66,7 +66,7 @@ const generateLinearPoints = () => {
       type: "nebula" as const,
       description: "Uma nebulosa misteriosa com energia estranha",
       image:
-        "https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F69aee9aae2844db097785996005e39f4?format=webp&width=800",
     },
     {
       id: "campo-asteroides",
