@@ -1600,25 +1600,50 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
           />
         </div>
         {/* Novos pontos clicáveis */}
-        {POINTS.map((point) => (
+        {points.map((point) => (
           <div
             key={point.id}
-            className="absolute z-20 cursor-pointer transform -translate-x-1/2 -translate-y-1/2"
+            className={`absolute z-20 transform -translate-x-1/2 -translate-y-1/2 ${
+              isAdmin
+                ? "cursor-grab hover:cursor-grab active:cursor-grabbing"
+                : "cursor-pointer"
+            } ${draggingPoint === point.id ? "z-30" : ""}`}
             style={{
               left: `${point.x}%`,
               top: `${point.y}%`,
             }}
             onClick={() => handlePointClick(point)}
+            onMouseDown={(e) => handlePointMouseDown(e, point)}
           >
             <div className="relative group">
               {/* Ponto principal */}
-              <div className="w-4 h-4 bg-blue-400 rounded-full border-2 border-white shadow-lg hover:scale-125 transition-transform duration-200 hover:bg-blue-300">
-                <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+              <div
+                className={`w-4 h-4 rounded-full border-2 border-white shadow-lg transition-all duration-200 ${
+                  draggingPoint === point.id
+                    ? "bg-yellow-400 scale-125"
+                    : isAdmin
+                      ? "bg-blue-400 hover:bg-blue-300 hover:scale-125"
+                      : "bg-blue-400 hover:bg-blue-300 hover:scale-125"
+                }`}
+              >
+                {draggingPoint !== point.id && (
+                  <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+                )}
               </div>
+
+              {/* Admin indicator */}
+              {isAdmin && (
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full border border-white opacity-60"></div>
+              )}
 
               {/* Tooltip */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
                 {point.label}
+                {isAdmin && (
+                  <div className="text-yellow-400 text-xs">
+                    Arraste para mover
+                  </div>
+                )}
               </div>
             </div>
           </div>
