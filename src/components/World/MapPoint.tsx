@@ -56,6 +56,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para planeta-limite
+  if (pointId === "planeta-limite") {
+    return {
+      primary: "#ec4899",
+      secondary: "#be185d",
+      glow: "rgb(236, 72, 153)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
