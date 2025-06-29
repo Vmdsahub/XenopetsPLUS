@@ -50,7 +50,7 @@ const generateLinearPoints = () => {
       type: "planet" as const,
       description: "Um planeta verdejante cheio de vida",
       image:
-        "https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F50c9b6d67a104a3493aa90dd1b8ec545?format=webp&width=800",
     },
     {
       id: "estacao-omega",
