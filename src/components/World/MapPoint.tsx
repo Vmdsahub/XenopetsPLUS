@@ -145,7 +145,14 @@ export const MapPoint: React.FC<MapPointProps> = ({
       className={`absolute z-10 ${isDragging ? "pointer-events-none" : "cursor-pointer"}`}
       style={style}
       onClick={onClick}
-      whileHover={!isDragging ? { scale: 1.03 } : {}}
+      whileHover={
+        !isDragging
+          ? {
+              scale: 1.03,
+              transition: { duration: 0.05, ease: "easeOut" },
+            }
+          : {}
+      }
       whileTap={!isDragging ? { scale: 0.9 } : {}}
       initial={{ opacity: 0, scale: 0 }}
       animate={{
@@ -159,11 +166,6 @@ export const MapPoint: React.FC<MapPointProps> = ({
         type: "spring",
         stiffness: 500,
         damping: 25,
-        delay: Math.random() * 0.5,
-      }}
-      whileHover={{
-        scale: 1.03,
-        transition: { duration: 0.1, ease: "easeOut" },
       }}
     >
       {/* Outer pulse ring for nearby state - skip for all custom images */}
