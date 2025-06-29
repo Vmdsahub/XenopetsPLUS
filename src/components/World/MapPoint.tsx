@@ -152,15 +152,23 @@ export const MapPoint: React.FC<MapPointProps> = ({
       {/* Main point */}
       <motion.div
         className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
-          point.id === "mundo-gelado" || point.id === "planeta-limite" || point.id === "estacao-borda" ? "w-60 h-60" : "w-6 h-6"
+          point.id === "mundo-gelado" ||
+          point.id === "planeta-limite" ||
+          point.id === "estacao-borda"
+            ? "w-60 h-60"
+            : "w-6 h-6"
         }`}
         style={{
           background:
-            point.id === "mundo-gelado" || point.id === "planeta-limite" || point.id === "estacao-borda"
+            point.id === "mundo-gelado" ||
+            point.id === "planeta-limite" ||
+            point.id === "estacao-borda"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
-            point.id === "mundo-gelado" || point.id === "planeta-limite" || point.id === "estacao-borda"
+            point.id === "mundo-gelado" ||
+            point.id === "planeta-limite" ||
+            point.id === "estacao-borda"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
@@ -176,7 +184,6 @@ export const MapPoint: React.FC<MapPointProps> = ({
             alt="Mundo Gelado"
             className="w-full h-full object-cover"
           />
-        )
         ) : point.id === "planeta-limite" ? (
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F32e8fdb02b8847e2905c284b102c06f1?format=webp&width=800"
@@ -195,24 +202,26 @@ export const MapPoint: React.FC<MapPointProps> = ({
       </motion.div>
 
       {/* Ambient glow - skip for custom images */}
-      {point.id !== "mundo-gelado" && point.id !== "planeta-limite" && point.id !== "estacao-borda" && (
-        <motion.div
-          className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
-          style={{
-            background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 2,
-          }}
-        />
-      )}
+      {point.id !== "mundo-gelado" &&
+        point.id !== "planeta-limite" &&
+        point.id !== "estacao-borda" && (
+          <motion.div
+            className="absolute inset-0 rounded-full opacity-30 blur-sm -z-10"
+            style={{
+              background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 2,
+            }}
+          />
+        )}
 
       {/* Hover tooltip */}
       <motion.div
@@ -228,25 +237,27 @@ export const MapPoint: React.FC<MapPointProps> = ({
       </motion.div>
 
       {/* Orbit rings for planets - skip for custom images */}
-      {point.type === "planet" && point.id !== "mundo-gelado" && point.id !== "planeta-limite" && (
-        <motion.div
-          className="absolute inset-0 rounded-full border border-white/20 -z-10"
-          style={{
-            width: "150%",
-            height: "150%",
-            left: "-25%",
-            top: "-25%",
-          }}
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      )}
+      {point.type === "planet" &&
+        point.id !== "mundo-gelado" &&
+        point.id !== "planeta-limite" && (
+          <motion.div
+            className="absolute inset-0 rounded-full border border-white/20 -z-10"
+            style={{
+              width: "150%",
+              height: "150%",
+              left: "-25%",
+              top: "-25%",
+            }}
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        )}
     </motion.div>
   );
 };
