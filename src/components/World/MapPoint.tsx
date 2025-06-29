@@ -243,10 +243,11 @@ export const MapPoint: React.FC<MapPointProps> = ({
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
       </motion.div>
 
-      {/* Orbit rings for planets - skip for mundo-gelado and campo-asteroides */}
+      {/* Orbit rings for planets - skip for mundo-gelado, campo-asteroides and planeta-limite */}
       {point.type === "planet" &&
         point.id !== "mundo-gelado" &&
-        point.id !== "campo-asteroides" && (
+        point.id !== "campo-asteroides" &&
+        point.id !== "planeta-limite" && (
           <motion.div
             className="absolute inset-0 rounded-full border border-white/20 -z-10"
             style={{
