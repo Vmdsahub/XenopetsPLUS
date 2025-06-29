@@ -21,7 +21,7 @@ interface Point {
 }
 
 // 7 pontos distribuídos em círculo ao redor do centro
-const createPoints = (): Point[] => {
+const createDefaultPoints = (): Point[] => {
   const points: Point[] = [];
   const centerX = 50;
   const centerY = 50;
@@ -42,8 +42,6 @@ const createPoints = (): Point[] => {
 
   return points;
 };
-
-const POINTS = createPoints();
 
 // Configuração simplificada do mundo toroidal
 const WORLD_CONFIG = {
