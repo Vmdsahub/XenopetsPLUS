@@ -1027,28 +1027,6 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     return Math.sqrt(minDx * minDx + minDy * minDy);
   };
 
-  // Verifica proximidade com cálculo de distância toroidal correto
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const threshold = 8;
-      let closest: string | null = null;
-      let closestDistance = Infinity;
-
-      GALAXY_POINTS.forEach((point) => {
-        const distance = getToroidalDistance(shipPosRef.current, point);
-
-        if (distance < threshold && distance < closestDistance) {
-          closest = point.id;
-          closestDistance = distance;
-        }
-      });
-
-      setNearbyPoint(closest);
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   // Salva posição - simples
   useEffect(() => {
     const interval = setInterval(() => {
