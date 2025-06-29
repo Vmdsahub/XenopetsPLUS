@@ -164,7 +164,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
         className={`relative rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm overflow-hidden ${
           point.id === "mundo-gelado" ||
           point.id === "planeta-limite" ||
-          point.id === "estacao-borda"
+          point.id === "estacao-borda" ||
+          point.id === "campo-asteroides"
             ? "w-60 h-60"
             : "w-6 h-6"
         }`}
@@ -172,13 +173,15 @@ export const MapPoint: React.FC<MapPointProps> = ({
           background:
             point.id === "mundo-gelado" ||
             point.id === "planeta-limite" ||
-            point.id === "estacao-borda"
+            point.id === "estacao-borda" ||
+            point.id === "campo-asteroides"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
             point.id === "mundo-gelado" ||
             point.id === "planeta-limite" ||
-            point.id === "estacao-borda"
+            point.id === "estacao-borda" ||
+            point.id === "campo-asteroides"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
