@@ -56,6 +56,16 @@ const getPointColor = (type: string, pointId?: string) => {
     };
   }
 
+  // Cor específica para estacao-borda
+  if (pointId === "estacao-borda") {
+    return {
+      primary: "#06b6d4",
+      secondary: "#0891b2",
+      glow: "rgb(6, 182, 212)",
+      isCustomImage: true,
+    };
+  }
+
   switch (type) {
     case "planet":
       return {
