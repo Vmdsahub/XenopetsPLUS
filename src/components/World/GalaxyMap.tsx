@@ -61,6 +61,15 @@ const wrap = (value: number, min: number, max: number): number => {
 };
 
 export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
+  const { user } = useAuthStore();
+  const isAdmin = user?.username === "Vitoca";
+
+  // Load points from localStorage or use defaults
+  const [points, setPoints] = useState<Point[]>(() => {
+    const saved = localStorage.getItem("xenopets-galaxy-points");
+    return saved ? JSON.parse(saved) : createDefaultPoints();
+  });
+
   const [shipPosition, setShipPosition] = useState(() => {
     const saved = localStorage.getItem("xenopets-player-data");
     const data = saved
@@ -70,6 +79,9 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     return data.ship;
   });
 
+  // Drag states for points
+  const [draggingPoint, setDraggingPoint] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [isColliding, setIsColliding] = useState(false);
   const [collisionNotification, setCollisionNotification] = useState<{
