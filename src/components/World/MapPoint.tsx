@@ -183,21 +183,25 @@ export const MapPoint: React.FC<MapPointProps> = ({
                 ? "w-60 h-60"
                 : point.id === "estacao-borda"
                   ? "w-60 h-60"
-                  : "rounded-full w-6 h-6"
+                  : point.id === "nebulosa-crimson"
+                    ? "w-60 h-60"
+                    : "rounded-full w-6 h-6"
         }`}
         style={{
           background:
             point.id === "mundo-gelado" ||
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
-            point.id === "estacao-borda"
+            point.id === "estacao-borda" ||
+            point.id === "nebulosa-crimson"
               ? "transparent"
               : `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
           border:
             point.id === "mundo-gelado" ||
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
-            point.id === "estacao-borda"
+            point.id === "estacao-borda" ||
+            point.id === "nebulosa-crimson"
               ? "none"
               : `1px solid ${colors.primary}40`,
         }}
@@ -205,7 +209,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
           boxShadow:
             point.id === "campo-asteroides" ||
             point.id === "planeta-limite" ||
-            point.id === "estacao-borda"
+            point.id === "estacao-borda" ||
+            point.id === "nebulosa-crimson"
               ? "none"
               : isNearby
                 ? `0 0 20px ${colors.glow}`
