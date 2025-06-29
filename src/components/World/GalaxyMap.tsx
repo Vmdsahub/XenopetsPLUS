@@ -11,6 +11,39 @@ import { playBarrierCollisionSound } from "../../utils/soundManager";
 
 interface GalaxyMapProps {}
 
+// Sistema simples de pontos
+interface Point {
+  id: number;
+  x: number;
+  y: number;
+  label: string;
+}
+
+// 7 pontos distribuídos em círculo ao redor do centro
+const createPoints = (): Point[] => {
+  const points: Point[] = [];
+  const centerX = 50;
+  const centerY = 50;
+  const radius = 20;
+
+  for (let i = 0; i < 7; i++) {
+    const angle = (i * 2 * Math.PI) / 7;
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY + Math.sin(angle) * radius;
+
+    points.push({
+      id: i + 1,
+      x: Math.max(10, Math.min(90, x)),
+      y: Math.max(10, Math.min(90, y)),
+      label: `Setor ${i + 1}`,
+    });
+  }
+
+  return points;
+};
+
+const POINTS = createPoints();
+
 // Configuração simplificada do mundo toroidal
 const WORLD_CONFIG = {
   width: 200, // Tamanho do mundo em %
