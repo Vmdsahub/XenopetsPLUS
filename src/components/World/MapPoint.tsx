@@ -162,8 +162,9 @@ export const MapPoint: React.FC<MapPointProps> = ({
         delay: Math.random() * 0.5,
       }}
     >
-      {/* Outer pulse ring for nearby state - skip for campo-asteroides, planeta-limite, estacao-borda, nebulosa-crimson and estacao-omega */}
+      {/* Outer pulse ring for nearby state - skip for all custom images */}
       {isNearby &&
+        point.id !== "mundo-gelado" &&
         point.id !== "campo-asteroides" &&
         point.id !== "planeta-limite" &&
         point.id !== "estacao-borda" &&
