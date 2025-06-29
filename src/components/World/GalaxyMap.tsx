@@ -49,7 +49,6 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = () => {
     return data.ship;
   });
 
-  const [nearbyPoint, setNearbyPoint] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isColliding, setIsColliding] = useState(false);
   const [collisionNotification, setCollisionNotification] = useState<{
