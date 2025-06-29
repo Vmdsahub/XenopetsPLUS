@@ -41,88 +41,6 @@ const wrap = (value: number, min: number, max: number): number => {
   return result;
 };
 
-// Gera pontos distribuídos ao redor do centro
-const generateLinearPoints = () => {
-  const points = [
-    {
-      id: "terra-nova",
-      name: "Terra Nova",
-      type: "planet" as const,
-      description: "Um planeta verdejante cheio de vida",
-      image:
-        "https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg",
-    },
-    {
-      id: "estacao-omega",
-      name: "Estação Omega",
-      type: "station" as const,
-      description: "Centro comercial da galáxia",
-      image:
-        "https://images.pexels.com/photos/2156/sky-earth-space-working.jpg",
-    },
-    {
-      id: "nebulosa-crimson",
-      name: "Nebulosa Crimson",
-      type: "nebula" as const,
-      description: "Uma nebulosa misteriosa com energia estranha",
-      image:
-        "https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg",
-    },
-    {
-      id: "campo-asteroides",
-      name: "Campo de Asteroides",
-      type: "asteroid" as const,
-      description: "Rico em recursos minerais raros",
-      image:
-        "https://images.pexels.com/photos/2159/flight-sky-earth-space-working.jpg",
-    },
-    {
-      id: "mundo-gelado",
-      name: "Mundo Gelado",
-      type: "planet" as const,
-      description: "Planeta coberto de gelo eterno",
-      image:
-        "https://cdn.builder.io/api/v1/image/assets%2F972df3cc1e344880ab2a8d2ca65f8d2b%2F07a8eb270920440caecf8ebc2ae10dfe?format=webp&width=800",
-    },
-    {
-      id: "estacao-borda",
-      name: "Estação da Borda",
-      type: "station" as const,
-      description: "Estação nos limites do espaço",
-      image:
-        "https://images.pexels.com/photos/2156/sky-earth-space-working.jpg",
-    },
-    {
-      id: "planeta-limite",
-      name: "Planeta Limite",
-      type: "planet" as const,
-      description: "Mundo nos confins da galáxia",
-      image:
-        "https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg",
-    },
-  ];
-
-  // Posições distribuídas em círculo ao redor das coordenadas visuais do centro
-  const centerX = 50; // Centro visual do mapa
-  const centerY = 50; // Centro visual do mapa
-  const radius = 25; // Raio maior para melhor distribuição
-
-  return points.map((point, index) => {
-    // Distribui os pontos em círculo ao redor do centro visual
-    const angle = (index * 2 * Math.PI) / points.length;
-    const x = centerX + Math.cos(angle) * radius;
-    const y = centerY + Math.sin(angle) * radius;
-
-    return {
-      ...point,
-      x: Math.max(8, Math.min(92, x)), // Margem maior para evitar cortes
-      y: Math.max(8, Math.min(92, y)), // Margem maior para evitar cortes
-    };
-  });
-};
-
-const GALAXY_POINTS: MapPointData[] = generateLinearPoints();
-
 export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
   const [shipPosition, setShipPosition] = useState(() => {
     const saved = localStorage.getItem("xenopets-player-data");
@@ -1625,7 +1543,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
             }}
             transition={{
               rotate: {
-                duration: 600, // Rotação muito mais lenta - 10 minutos por volta
+                duration: 600, // Rota��ão muito mais lenta - 10 minutos por volta
                 repeat: Infinity,
                 ease: "linear",
               },
