@@ -8,6 +8,7 @@ import React, {
 import { motion, useMotionValue, animate } from "framer-motion";
 import { PlayerShip } from "./PlayerShip";
 import { playBarrierCollisionSound } from "../../utils/soundManager";
+import { useAuthStore } from "../../store/authStore";
 
 interface GalaxyMapProps {}
 
