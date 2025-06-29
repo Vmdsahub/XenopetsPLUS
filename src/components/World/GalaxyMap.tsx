@@ -11,16 +11,6 @@ import { playBarrierCollisionSound } from "../../utils/soundManager";
 
 interface GalaxyMapProps {}
 
-interface MapPointData {
-  id: string;
-  x: number;
-  y: number;
-  name: string;
-  type: "planet" | "station" | "nebula" | "asteroid";
-  description: string;
-  image?: string;
-}
-
 // Configuração simplificada do mundo toroidal
 const WORLD_CONFIG = {
   width: 200, // Tamanho do mundo em %
