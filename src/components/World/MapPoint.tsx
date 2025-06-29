@@ -176,7 +176,8 @@ export const MapPoint: React.FC<MapPointProps> = ({
         point.id !== "planeta-limite" &&
         point.id !== "estacao-borda" &&
         point.id !== "campo-asteroides" &&
-        point.id !== "nebulosa-crimson" && (
+        point.id !== "nebulosa-crimson" &&
+        point.id !== "estacao-omega" && (
           <motion.div
             className="absolute inset-0 rounded-full border-2"
             style={{ borderColor: colors.primary }}
