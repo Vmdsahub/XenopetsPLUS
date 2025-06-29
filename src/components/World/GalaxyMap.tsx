@@ -98,7 +98,7 @@ const generateLinearPoints = () => {
       type: "planet" as const,
       description: "Mundo nos confins da galáxia",
       image:
-        "https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg",
+        "https://cdn.builder.io/api/v1/image/assets%2Fab1d9d92bc174226b835128749a95e68%2F32e8fdb02b8847e2905c284b102c06f1?format=webp&width=800",
     },
   ];
 
@@ -903,7 +903,7 @@ export const GalaxyMap: React.FC<GalaxyMapProps> = ({ onPointClick }) => {
       const deltaX = autoPilotDirection.x * speed;
       const deltaY = autoPilotDirection.y * speed;
 
-      // Calcula nova posição proposta
+      // Calcula nova posiç��o proposta
       const proposedX = wrap(
         shipPosRef.current.x - deltaX / 12,
         0,
